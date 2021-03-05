@@ -74,7 +74,7 @@ function Questions() {
     { number: 33,
       question: "If you were to die this evening with no opportunity to communicate with anyone, what would you most regret not having told someone? Why haven't you told them yet?"},
     { number: 34,
-      question: "You house, containing everything you own, catches fire. After saving your loved ones and pets, you have time to safely make a final dash to save any one item. What would it be? Why?"},
+      question: "Your house, containing everything you own, catches fire. After saving your loved ones and pets, you have time to safely make a final dash to save any one item. What would it be? Why?"},
     { number: 35,
       question: "Of all the people in your family, whose death would you find the most disturbing? Why?"},
     { number: 36,
@@ -83,11 +83,11 @@ function Questions() {
   // const askQuestion = () => {
 
   //   }
-  
+
 
   return (
     <View>
-      <Text style={styles.text}>{questSet[1].question}</Text>
+      <Text style={styles.text}>{questSet[33].question}</Text>
     </View>
   )
 }
