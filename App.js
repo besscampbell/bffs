@@ -23,6 +23,9 @@ const rrfProps = {
   createFirestoreInstance
 }
 
+store.subscribe(() => console.log(store.getState()));
+
+
 export default function App() {
   return (
     <Provider store={store}>
