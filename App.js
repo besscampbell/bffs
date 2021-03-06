@@ -3,7 +3,8 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen';
-import QuestionScreen from './screens/QuestionScreen'
+import QuestionScreen from './screens/QuestionScreen';
+import ResponseScreen from './screens/ResponseScreen';
 import { createStore } from "redux";
 import { Provider } from 'react-redux';
 import questionsReducer from './reducers/QuestionsReducer';
@@ -42,7 +43,7 @@ export default function App() {
               }
             }}>
             <Stack.Screen
-              name="HomeScreen"
+              name="Home"
               component={HomeScreen}
               options={{
                 title: 'Home',
@@ -53,6 +54,13 @@ export default function App() {
               component={QuestionScreen}
               options={{
                 title: 'Questions',
+                }}
+            />
+             <Stack.Screen
+              name="Responses"
+              component={ResponseScreen}
+              options={{
+                title: 'Responses',
                 }}
             />
           </Stack.Navigator>

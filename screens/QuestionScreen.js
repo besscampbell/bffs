@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {View, Text, StyleSheet} from 'react-native';
+import React from "react";
+import {View, StyleSheet, ScrollView} from 'react-native';
 import Questions from '../components/Questions';
 import Input from '../components/Input'
 import {useFirestore} from 'react-redux-firebase';
@@ -7,7 +7,7 @@ import {useFirestore} from 'react-redux-firebase';
 
 
 const QuestionScreen = ({navigation}) => {
-  // const question = state.question
+
   const firestore = useFirestore();
 
   const handleAddResponse = (response) => {
@@ -18,7 +18,7 @@ const QuestionScreen = ({navigation}) => {
           response: response,
           question: 1
         })
-        .then(navigation.navigate('HomeScreen')
+        .then(navigation.navigate('Home')
       );
     } catch(error){
       console.log(error);
@@ -26,13 +26,12 @@ const QuestionScreen = ({navigation}) => {
   }
 
   return(
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Questions/>
       <Input
         onAddResponse={handleAddResponse}
-
       />
-    </View>
+    </ScrollView>
   );
 }
 
@@ -40,8 +39,8 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fadadd',
     flex: 1,
-    alignItems: 'center',
-    justifyContent: "space-around"
+    // alignItems: 'center',
+    // justifyContent: "space-around"
   },
 });
 

@@ -9,17 +9,18 @@ const HomeScreen = ({navigation}) => {
         <Text style={styles.text2}>Friends</Text>
         <Text style={styles.text3}>Forever</Text>
       </View>
-      <Button style={styles.button}
-        title="Share your story"
-        onPress={() =>
-          navigation.navigate('Questions')}
-        options={{
-          buttonTitleStyle: {
-            fontFamily: 'Palatino',
-            color: '#e75480',
-          }
-        }}
-      />
+      <View style={styles.buttons}>
+        <Button style={styles.button}
+          title="Listen"
+          onPress={() =>
+            navigation.navigate('Responses')}
+        />
+        <Button style={styles.button}
+          title="Share"
+          onPress={() =>
+            navigation.navigate('Questions')}
+        />
+      </View>
     </SafeAreaView>
   );
 }
@@ -55,9 +56,10 @@ const styles = StyleSheet.create({
   button: {
     flex: 1,
   },
-  // image: {
-  //   flex: 2
-  // }
+  buttons: {
+    flexDirection: 'row',
+    paddingBottom: 25
+  }
 });
 
 export default HomeScreen;

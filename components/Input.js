@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {TextInput, StyleSheet, View, Button} from 'react-native';
-import {useFirestore} from 'react-redux-firebase';
 
 const Input = (props)=> {
   const [response, setResponse]= useState('');
