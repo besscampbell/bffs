@@ -1,16 +1,31 @@
-import React from 'react';
-import {TextInput, StyleSheet} from 'react-native';
+import React, { useState } from 'react';
+import {TextInput, StyleSheet, View, Button} from 'react-native';
 import {useFirestore} from 'react-redux-firebase';
 
 const Input = (props)=> {
+  const [response, setResponse]= useState('');
+  const handleResponseInput = response => {
+    setResponse(response);
+  }
 
   return(
-    <TextInput
-      {...props}
-      maxLength={600}
-    />
-  )
-}
+    <View>
+      <TextInput
+        {...props}
+        placeholder="Share here..."
+        onChangeText={handleResponseInput}
+        value={response}
+        maxLength={600}
+        multiline
+        numberOfLines={6}
+      />
+      <Button
+        title="Send to your friend"
+        onPress={()=>props.onAddResponse(response)}
+      />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   input: {
