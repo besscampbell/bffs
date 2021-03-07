@@ -4,25 +4,21 @@ import Response from '../components/Response'
 import {useSelector} from 'react-redux';
 import {useFirestoreConnect, isLoaded} from 'react-redux-firebase';
 
+
 const ResponseScreen = ({navigation}) => {
   useFirestoreConnect([
     {collection: 'responses'}
   ]);
   const responses = useSelector(state => state.firestore.ordered.responses);
-  console.log(responses);
+
+  const handleSelectedResponse = (id) => {
+    const selectedResponse = responses.filter(response => response.id === id);
+    navigation.navigate('Details',  {response:1});
+  }
 
   if(isLoaded(responses)){
     return (
       <View style={styles.container}>
-        {/* <Text>
-          {responses.map((element) => {
-            return <Response
-              response={element.response}
-              question={element.question}
-              id={element.id}
-            />
-          })}
-        </Text> */}
         <FlatList
           data={responses}
           renderItem={itemData => (
@@ -30,7 +26,7 @@ const ResponseScreen = ({navigation}) => {
             question={itemData.item.question}
             response={itemData.item.response}
             id={itemData.item.id}
-            onToDetails={()=> navigation.navigate('Details')}/>)}
+            onToDetails={handleSelectedResponse}/>)}
         />
       </View>
     );

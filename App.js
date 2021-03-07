@@ -8,12 +8,12 @@ import ResponseScreen from './screens/ResponseScreen';
 import ResponseDetailsScreen from './screens/ResponseDetailsScreen';
 import { createStore } from "redux";
 import { Provider } from 'react-redux';
-import questionsReducer from './reducers/QuestionsReducer';
+import rootReducer from './reducers';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import { createFirestoreInstance } from 'redux-firestore';
 import firebase from './firebase';
 
-const store = createStore(questionsReducer);
+const store = createStore(rootReducer);
 const Stack = createStackNavigator();
 
 const rrfProps = {

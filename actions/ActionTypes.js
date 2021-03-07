@@ -1,1 +1,2 @@
 export const NEXT_QUESTION = 'NEXT_QUESTION';
+export const SELECT_RESPONSE = 'SELECT_RESPONSE';

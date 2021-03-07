@@ -1,10 +1,11 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
-const ResponseDetailsScreen = () => {
+const ResponseDetailsScreen = (props) => {
+  const {response} = this.props
   return(
     <View>
-      <Text>Hello</Text>
+      <Text>{response}</Text>
     </View>
   )
 }

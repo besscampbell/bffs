@@ -4,7 +4,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Response = (props) => {
   return (
-    <TouchableOpacity onPress={props.onToDetails}>
+    <TouchableOpacity onPress={() => props.onToDetails(props.id)}>
       <View style={styles.container}>
         <Text style={styles.text}>Question {props.question}</Text>
         {/* <Text style={styles.text}> {props.response}</Text> */}
