@@ -1,17 +1,26 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Response = (props) => {
   return (
-    <View style={styles.container}>
-      <Text>{props.response}</Text>
-    </View>
-  )
+    <TouchableOpacity onPress={props.onToDetails}>
+      <View style={styles.container}>
+        <Text style={styles.text}>Question {props.question}</Text>
+        {/* <Text style={styles.text}> {props.response}</Text> */}
+      </View>
+    </TouchableOpacity>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    padding: 10,
+    marginVertical: 10,
+  },
+  text: {
+    fontFamily: 'Palatino',
+    color: '#e75480',
   }
 })
 

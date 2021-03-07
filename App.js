@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen';
 import QuestionScreen from './screens/QuestionScreen';
 import ResponseScreen from './screens/ResponseScreen';
+import ResponseDetailsScreen from './screens/ResponseDetailsScreen';
 import { createStore } from "redux";
 import { Provider } from 'react-redux';
 import questionsReducer from './reducers/QuestionsReducer';
@@ -61,6 +62,13 @@ export default function App() {
               component={ResponseScreen}
               options={{
                 title: 'Responses',
+                }}
+            />
+            <Stack.Screen
+              name="Details"
+              component={ResponseDetailsScreen}
+              options={{
+                title: '',
                 }}
             />
           </Stack.Navigator>
