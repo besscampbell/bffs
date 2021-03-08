@@ -1,6 +1,7 @@
 import React from 'react';
 import ResponseDetails from '../components/ResponseDetails'
 import {View, Text, StyleSheet} from 'react-native';
+import questSet from '../questions';
 
 
 const ResponseDetailsScreen = ({route, navigation}) => {
