@@ -1,15 +1,28 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import {useSelector} from 'react-redux';
+import {View, Text, StyleSheet} from 'react-native';
 
-const ResponseDetails = () => {
-  const response = useSelector(state => state.selectedRespose);
-  console.log(response);
+const ResponseDetails = ({ response }) => {
   return (
-      <View>
-        <Text>Hello {response.response}</Text>
+      <View style={styles.container}>
+        <Text></Text>
+        <Text style={styles.text}>{response.response}</Text>
       </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fadadd',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight: 0,
+  },
+  text: {
+    fontFamily: 'Palatino',
+    color: '#e75480',
+    fontSize: 20
+  },
+});
 
 export default ResponseDetails

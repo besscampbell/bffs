@@ -8,7 +8,7 @@ import * as a from '../actions';
 
 const ResponseScreen = ({navigation, props}) => {
   // const [selectedResponse, setSelectedResponse] = useState(null)
-  const {dispatch} = useDispatch();
+  // const {dispatch} = useDispatch();
   useFirestoreConnect([
     {collection: 'responses'}
   ]);
@@ -18,13 +18,13 @@ const ResponseScreen = ({navigation, props}) => {
   const handleSelectedResponse = (id) => {
     const responseFromList = responses.filter(response => response.id === id);
     const selectedResponse= responseFromList[0]
-    action = a.selectRespose({
-      response: selectedResponse.response,
-      question: selectedResponse.question,
-      id: selectedResponse.id,
-    })
-    dispatch(responseFromList[0]);
-    navigation.navigate('Details');
+    // action = a.selectRespose({
+    //   response: selectedResponse.response,
+    //   question: selectedResponse.question,
+    //   id: selectedResponse.id,
+    // })
+    // dispatch(responseFromList[0]);
+    navigation.navigate('Details', {response: selectedResponse});
   }
 
   if(isLoaded(responses)){
