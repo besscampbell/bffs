@@ -27,3 +27,6 @@
 03/08/2021
 
 - Researching how to best handle state in my application
+- Got really stuck for the first half of the day and got into a research rabbit hole
+- Checked in with Eric after lunch and was able to route out why I hadn't been able to pass things through navigation
+- Back on track to making progress!
