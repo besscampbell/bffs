@@ -1,12 +1,12 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Platform, StatusBar} from 'react-native';
 import {questSet} from '../questions';
 
 const ResponseDetails = ({ response }) => {
   
   return (
       <View style={styles.container}>
-        <Text style={styles.text1}>{questSet[(response.question-1)].question}</Text>
+        <Text style={styles.text1}>{questSet[(response.question -1)].question}</Text>
         <Text style={styles.text2}>{response.response}</Text>
       </View>
   );

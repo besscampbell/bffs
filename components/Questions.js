@@ -2,11 +2,11 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {questSet} from '../questions';
 
-function Questions() {
+function Questions({onQuestion}) {
 
   return (
     <View>
-      <Text style={styles.text}>{questSet[5].question}</Text>
+      <Text style={styles.text}>{questSet[onQuestion].question}</Text>
     </View>
   )
 }

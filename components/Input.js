@@ -20,7 +20,7 @@ const Input = (props)=> {
       />
       <Button
         title="Send to your friend"
-        onPress={()=>props.onAddResponse(response)}
+        onPress={()=> props.onAddResponse(response)}
       />
     </View>
   );

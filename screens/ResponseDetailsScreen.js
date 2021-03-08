@@ -1,6 +1,6 @@
 import React from 'react';
 import ResponseDetails from '../components/ResponseDetails'
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Platform, StatusBar} from 'react-native';
 import questSet from '../questions';
 
 

@@ -1,14 +1,11 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, FlatList} from 'react-native';
 import Response from '../components/Response'
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {useFirestoreConnect, isLoaded} from 'react-redux-firebase';
-import * as a from '../actions';
 
 
 const ResponseScreen = ({navigation, props}) => {
-  // const [selectedResponse, setSelectedResponse] = useState(null)
-  // const {dispatch} = useDispatch();
   useFirestoreConnect([
     {collection: 'responses'}
   ]);
@@ -18,12 +15,6 @@ const ResponseScreen = ({navigation, props}) => {
   const handleSelectedResponse = (id) => {
     const responseFromList = responses.filter(response => response.id === id);
     const selectedResponse= responseFromList[0]
-    // action = a.selectRespose({
-    //   response: selectedResponse.response,
-    //   question: selectedResponse.question,
-    //   id: selectedResponse.id,
-    // })
-    // dispatch(responseFromList[0]);
     navigation.navigate('Details', {response: selectedResponse});
   }
 
