@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {SafeAreaView, Text, Platform, StatusBar, StyleSheet, Button, View} from 'react-native';
+import { connect } from 'react-redux';
 
 const HomeScreen = ({navigation}) => {
   return (
@@ -62,4 +63,13 @@ const styles = StyleSheet.create({
   }
 });
 
+// const mapStateToProps = state => {
+//   return {
+//     question: state.question,
+//     selectedResponse: state.selectedResponse,
+//     firestore: state.firestore,
+//   }
+// }
+
+// export default connect(mapStateToProps)(HomeScreen);
 export default HomeScreen;

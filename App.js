@@ -12,20 +12,26 @@ import rootReducer from './reducers';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import { createFirestoreInstance } from 'redux-firestore';
 import firebase from './firebase';
+import 'firebase/auth';
 
-const store = createStore(rootReducer);
+const initialState = {
+  selectedResponse: null,
+  questions: 0,
+}
+
+const store = createStore(rootReducer, initialState);
 const Stack = createStackNavigator();
+
 
 const rrfProps = {
   firebase,
   config: {
-    userProfile: "users"
+    userProfile: "users",
+    useFirestoreForProfile: true,
   },
   dispatch: store.dispatch,
   createFirestoreInstance
 }
-
-store.subscribe(() => console.log(store.getState()));
 
 
 export default function App() {

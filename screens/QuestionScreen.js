@@ -16,7 +16,7 @@ const QuestionScreen = ({navigation}) => {
       firestore.collection('responses').add(
         {
           response: response,
-          question: 1
+          question: 2
         })
         .then(navigation.navigate('Home')
       );
