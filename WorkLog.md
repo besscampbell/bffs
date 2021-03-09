@@ -38,3 +38,4 @@
 3/09/2021
 
 - Downloaded Android emulator to see my app is looking on androids
+- Reading about the different auth options
