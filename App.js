@@ -9,6 +9,8 @@ import firebase from './firebase';
 import 'firebase/auth';
 import Navigation from './navigation';
 
+
+
 const initialState = {
   selectedResponse: null,
   questions: 0,
@@ -31,7 +33,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <ReactReduxFirebaseProvider {...rrfProps}>
-       <Navigation />
+        <Navigation />
       </ReactReduxFirebaseProvider>
     </Provider>
   );

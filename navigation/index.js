@@ -4,11 +4,31 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
 import QuestionScreen from '../screens/QuestionScreen';
 import ResponseScreen from '../screens/ResponseScreen';
+import LoginScreen from '../screens/LoginScreen';
 import ResponseDetailsScreen from '../screens/ResponseDetailsScreen';
 
 const Stack = createStackNavigator();
+// const LoginStack = createStackNavigator();
 
 const Navigation = () => {
+  const Home = () => {
+    <Tab.Navigator>
+      <Tab.Screen
+        name="Questions"
+        component={QuestionScreen}
+        options={{
+          title: 'Questions',
+          }}
+      />
+      <Tab.Screen
+        name="Responses"
+        component={ResponseScreen}
+        options={{
+          title: 'Responses',
+          }}
+      />
+    </Tab.Navigator>
+  }
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -22,13 +42,17 @@ const Navigation = () => {
           }
         }}>
         <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+        />
+        <Stack.Screen
           name="Home"
           component={HomeScreen}
           options={{
             title: 'Home',
         }}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Questions"
           component={QuestionScreen}
           options={{
@@ -40,8 +64,8 @@ const Navigation = () => {
           component={ResponseScreen}
           options={{
             title: 'Responses',
-            }}
-        />
+            }} */}
+        {/* /> */}
         <Stack.Screen
           name="Details"
           component={ResponseDetailsScreen}
@@ -50,6 +74,12 @@ const Navigation = () => {
             }}
         />
       </Stack.Navigator>
+      {/* <LoginStack.Navigator>
+        <LoginStack.Screen
+          name="Login"
+          component={LoginScreen}
+        />
+      </LoginStack.Navigator> */}
     </NavigationContainer>
   )
 }

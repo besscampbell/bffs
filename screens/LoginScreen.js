@@ -37,7 +37,7 @@ const Login = () => {
     <View style={styles.container}>
       <SignInInput onAddUser={doSignUp}/>
     </View>
-  )
+  );
 }
 
 styles = StyleSheet.create({
