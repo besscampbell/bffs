@@ -24,9 +24,17 @@
 
 - Work reflected in commits
 
+3/07/2021
+
+- Watch tutorials for 1.5 hours
+
 03/08/2021
 
 - Researching how to best handle state in my application
 - Got really stuck for the first half of the day and got into a research rabbit hole
-- Checked in with Eric after lunch and was able to route out why I hadn't been able to pass things through navigation
+- Checked in with Eric after lunch and was able to root out why I hadn't been able to pass things through navigation
 - Back on track to making progress!
+
+3/09/2021
+
+- Downloaded Android emulator to see my app is looking on androids

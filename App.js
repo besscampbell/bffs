@@ -1,11 +1,5 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import HomeScreen from './screens/HomeScreen';
-import QuestionScreen from './screens/QuestionScreen';
-import ResponseScreen from './screens/ResponseScreen';
-import ResponseDetailsScreen from './screens/ResponseDetailsScreen';
 import { createStore } from "redux";
 import { Provider } from 'react-redux';
 import rootReducer from './reducers';
@@ -13,6 +7,7 @@ import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import { createFirestoreInstance } from 'redux-firestore';
 import firebase from './firebase';
 import 'firebase/auth';
+import Navigation from './navigation';
 
 const initialState = {
   selectedResponse: null,
@@ -20,8 +15,6 @@ const initialState = {
 }
 
 const store = createStore(rootReducer, initialState);
-const Stack = createStackNavigator();
-
 
 const rrfProps = {
   firebase,
@@ -38,47 +31,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <ReactReduxFirebaseProvider {...rrfProps}>
-        <NavigationContainer>
-          <Stack.Navigator
-            screenOptions={{
-              headerStyle:{
-                backgroundColor:"#fadadd",
-              },
-              headerTitleStyle: {
-                fontFamily: 'Palatino',
-                color: "#e75480"
-              }
-            }}>
-            <Stack.Screen
-              name="Home"
-              component={HomeScreen}
-              options={{
-                title: 'Home',
-            }}
-            />
-            <Stack.Screen
-              name="Questions"
-              component={QuestionScreen}
-              options={{
-                title: 'Questions',
-                }}
-            />
-             <Stack.Screen
-              name="Responses"
-              component={ResponseScreen}
-              options={{
-                title: 'Responses',
-                }}
-            />
-            <Stack.Screen
-              name="Details"
-              component={ResponseDetailsScreen}
-              options={{
-                title: '',
-                }}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
+       <Navigation />
       </ReactReduxFirebaseProvider>
     </Provider>
   );
