@@ -8,30 +8,52 @@ const Input = (props)=> {
   }
 
   return(
-    <View>
-      <TextInput
-        {...props}
-        placeholder="Share here..."
-        onChangeText={handleResponseInput}
-        value={response}
-        maxLength={600}
-        multiline
-        numberOfLines={6}
-      />
-      <Button
-        title="Send to your friend"
-        onPress={()=> props.onAddResponse(response)}
-      />
+    <View style={styles.container}>
+      <View style={styles.inputContainer}>
+        <TextInput
+          {...props}
+          style={styles.input}
+          placeholder="Share here..."
+          placeholderTextColor = {"#f294af"}
+          onChangeText={handleResponseInput}
+          value={response}
+          maxLength={600}
+          multiline
+          numberOfLines={6}
+        />
+      </View>
+      <View style={styles.buttonContainer}>
+        <Button
+          style={styles.button}
+          title="Send to your friend"
+          onPress={()=> props.onAddResponse(response)}
+        />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1
+  container: {
+    flex: 1,
+    padding: 15,
+    justifyContent: 'space-between',
   },
+  inputContainer: {
+    paddingTop: 30,
+    height: 550,
+    flex: 6
+  },
+  buttonContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  input: {
+    fontFamily: 'Palatino',
+    color: '#e75480',
+    fontSize: 30
+  }
 })
 
-export default Input
+export default Input;

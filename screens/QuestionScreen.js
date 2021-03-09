@@ -35,8 +35,8 @@ const QuestionScreen = ({navigation}) => {
 
   return(
     <ScrollView style={styles.container}>
-      <Questions onQuestion={questionNumber}/>
-      <Input
+      <Questions style={styles.quest} onQuestion={questionNumber}/>
+      <Input style={styles.input}
         onAddResponse={handleAddResponse}
       />
     </ScrollView>
@@ -47,8 +47,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fadadd',
     flex: 1,
-    // alignItems: 'center',
-    // justifyContent: "space-around"
+    padding: 15,
   },
 });
 
