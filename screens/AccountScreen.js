@@ -2,7 +2,7 @@ import React from 'react';
 import {Text, TouchableOpacity, View, StyleSheet} from 'react-native';
 import firebase, { auth } from 'firebase/app';
 
-const LogOffScreen = () => {
+const AccountScreen = () => {
   const doSignOut = () => {
     try{
       let feedback = auth().signOut()
@@ -49,4 +49,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LogOffScreen;
+export default AccountScreen;
