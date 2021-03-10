@@ -22,7 +22,7 @@ const SignUpInput = ({moveTo}) => {
       setError("Weak password, minimum 5 chars");
       setValid(false);
       return;
-    } else if (!isValid){
+    } else if (!isValidEmail(email)){
       setError("Invalid Email");
       setValid(false);
       return;
@@ -33,6 +33,11 @@ const SignUpInput = ({moveTo}) => {
     }
 
     doCreateUser(email, password);
+  }
+
+  const isValidEmail = (email) => {
+    const expression = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
+    return expression.test(String(email).toLowerCase());
   }
 
   const doCreateUser = async (email, password) => {
