@@ -14,21 +14,27 @@ const SignUpInput = ({moveTo}) => {
 
 
   function doSignUp () {
+    setError('');
+    setValid(true);
     if(!email){
       setError("Email required");
       setValid(false);
+      clearPasswords();
       return;
-    } else if (!password && password.trim() && password.length > 6){
+    } else if (password === '' || password.trim() && password.length > 6){
       setError("Weak password, minimum 5 chars");
       setValid(false);
+      clearPasswords();
       return;
     } else if (!isValidEmail(email)){
       setError("Invalid Email");
       setValid(false);
+      clearPasswords();
       return;
     } else if (password != confirmPassword){
       setError("Passwords do not match");
       setValid(false);
+      clearPasswords();
       return;
     }
 
@@ -44,6 +50,7 @@ const SignUpInput = ({moveTo}) => {
     try{
       let feedback = await auth().createUserWithEmailAndPassword(email, password)
       if(feedback && feedback.user){
+        clearPasswords();
         Alert.alert(
           "Success ✅",
           `Account created for ${email}`,
@@ -62,6 +69,11 @@ const SignUpInput = ({moveTo}) => {
     } catch(e) {
       console.error(e.message)
     }
+  }
+
+  const clearPasswords = () => {
+    setPassword('');
+    setConfirmPassword('');
   }
 
   return (
@@ -186,6 +198,14 @@ const styles = StyleSheet.create({
     marginTop: 30,
     alignItems: 'center',
     textDecorationLine: "underline"
+  },
+  errorText: {
+    color: "#e75480",
+    fontSize: 20,
+    fontFamily: 'Palatino',
+  },
+  errorContainer: {
+    alignItems: 'center',
   }
 })
 
