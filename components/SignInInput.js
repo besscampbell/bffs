@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {TextInput, View, Button, Text, Alert} from 'react-native';
+import {TextInput, View, TouchableOpacity, Button, Text, Alert, StyleSheet} from 'react-native';
 import firebase, { auth } from 'firebase/app';
 import 'firebase/auth';
 
@@ -7,6 +7,7 @@ import 'firebase/auth';
 const SignInInput = ({moveTo}) => {
   const [email, setEmail]= useState('');
   const [password, setPassword]= useState('');
+  const [confirmPassword, setConfirmPassword]= useState('');
   const [fetching, setFetching] = useState(false);
   const [error, setError] = useState('');
   const [isValid, setValid] = useState(true);
@@ -14,7 +15,7 @@ const SignInInput = ({moveTo}) => {
 
   function doSignUp () {
     if(!email){
-      setError("Email required *");
+      setError("Email required");
       setValid(false);
       return;
     } else if (!password && password.trim() && password.length > 6){
@@ -23,6 +24,10 @@ const SignInInput = ({moveTo}) => {
       return;
     } else if (!isValid){
       setError("Invalid Email");
+      setValid(false);
+      return;
+    } else if (password != confirmPassword){
+      setError("Passwords do not match");
       setValid(false);
       return;
     }
@@ -55,38 +60,127 @@ const SignInInput = ({moveTo}) => {
   }
 
   return (
-    <View>
-      <TextInput
-        label={"Email Address"}
-        style={styles.input}
-        placeholder="Email"
-        autoCapitalize={"none"}
-        keyboardType="email-address"
-        onChangeText={text => {
-          setError
-          setEmail(text)
-        }}
-        error={isValid}
-        value={email}
-        maxLength={35}
-      />
-      <TextInput
-        label={'Password'}
-        style={styles.input}
-        placeholder="Password"
-        autoCapitalize={'none'}
-        onChangeText={text =>
-          setPassword(text)}
-        value={password}
-        maxLength={35}
-      />
-      <Button
-          style={styles.button}
-          title="Register"
-          onPress={()=> doSignUp(email, password)}
+    <View style={styles.container}>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          autoCapitalize={"none"}
+          keyboardType="email-address"
+          onChangeText={text => {
+            setError
+            setEmail(text)
+          }}
+          error={isValid}
+          value={email}
+          maxLength={35}
         />
+      </View>
+      <View style={styles.inputContainer}>
+        <TextInput
+          secureTextEntry
+          style={styles.input}
+          placeholder="Password"
+          autoCapitalize={'none'}
+          onChangeText={text =>
+            setPassword(text)}
+          error={isValid}
+          value={password}
+          maxLength={35}
+        />
+      </View>
+      <View style={styles.inputContainer}>
+        <TextInput
+          secureTextEntry
+          style={styles.input}
+          placeholder="Confirm Password"
+          autoCapitalize={'none'}
+          onChangeText={text =>
+            setConfirmPassword(text)}
+          error={isValid}
+          value={confirmPassword}
+          maxLength={35}
+        />
+      </View>
+      {error ? (
+      <View style={styles.errorContainer}>
+        <Text style={styles.errorText}>{error}</Text>
+      </View>
+      ): null}
+      {/* <TouchableOpacity>
+        <Text style={styles.forgot}>Forgot Password?</Text>
+      </TouchableOpacity> */}
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => doSignUp(email, password, confirmPassword)}>
+          <Text style={styles.buttonText}>Register</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.loginView}>
+          <Text>
+            <Text style={styles.login}>Already a user? </Text>
+            <Text style={styles.login2}>Login</Text>
+          </Text>
+        </TouchableOpacity>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    // flex: 1,
+    // justifyContent: "center",
+    // alignItems: "center"
+  },
+  inputContainer: {
+    width: 350,
+    backgroundColor: "white",
+    borderRadius: 25,
+    height: 50,
+    marginBottom: 20,
+    justifyContent: "center",
+    padding: 20,
+  },
+  input: {
+    height: 50,
+    color: "#e75480",
+    fontSize: 30,
+    fontFamily: "Palatino"
+  },
+  button: {
+    alignItems: "center",
+    justifyContent: 'center',
+    backgroundColor: "#e6d7ff",
+    borderRadius: 25,
+    height: 50,
+    marginTop: 40,
+    marginBottom: 10,
+  },
+  buttonText:{
+    fontSize: 30,
+    fontFamily: "Palatino",
+    color: 'grey'
+  },
+  loginView: {
+    alignItems: 'center',
+    marginTop: 40,
+  },
+  login: {
+    height: 50,
+    color: "#e75480",
+    fontSize: 20,
+    fontFamily: "Palatino",
+    marginTop: 30,
+    alignItems: 'center',
+  },
+  login2: {
+    height: 50,
+    color: "#e75480",
+    fontSize: 20,
+    fontFamily: "Palatino",
+    marginTop: 30,
+    alignItems: 'center',
+    textDecorationLine: "underline"
+  }
+})
 
 export default SignInInput;

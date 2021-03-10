@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import {createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
 import QuestionScreen from '../screens/QuestionScreen';
 import ResponseScreen from '../screens/ResponseScreen';
@@ -8,6 +9,7 @@ import LoginScreen from '../screens/LoginScreen';
 import ResponseDetailsScreen from '../screens/ResponseDetailsScreen';
 
 const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 // const LoginStack = createStackNavigator();
 
 const Navigation = () => {
@@ -41,10 +43,10 @@ const Navigation = () => {
             color: "#e75480"
           }
         }}>
-        <Stack.Screen
-          name="Login"
+        {/* <Stack.Screen
+          name="Welcome"
           component={LoginScreen}
-        />
+        /> */}
         <Stack.Screen
           name="Home"
           component={HomeScreen}
