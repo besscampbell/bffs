@@ -4,7 +4,7 @@ import firebase, { auth } from 'firebase/app';
 import 'firebase/auth';
 
 
-const SignInInput = ({moveTo}) => {
+const SignUpInput = ({moveTo}) => {
   const [email, setEmail]= useState('');
   const [password, setPassword]= useState('');
   const [confirmPassword, setConfirmPassword]= useState('');
@@ -100,6 +100,7 @@ const SignInInput = ({moveTo}) => {
           error={isValid}
           value={confirmPassword}
           maxLength={35}
+          clearButtonMode="always"
         />
       </View>
       {error ? (
@@ -183,4 +184,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default SignInInput;
+export default SignUpInput;

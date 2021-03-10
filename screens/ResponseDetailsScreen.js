@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fadadd',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 20
   },
 });
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import firebase, { auth } from 'firebase/app';
-import SignInInput from '../components/SignInInput';
+import SignUpInput from '../components/SignUpInput';
 import {View, StyleSheet, Platform, StatusBar} from 'react-native';
 
 const Login = ({navigation}) => {
@@ -8,7 +8,7 @@ const Login = ({navigation}) => {
 
   return(
     <View style={styles.container}>
-      <SignInInput moveTo={navigation}/>
+      <SignUpInput moveTo={navigation}/>
     </View>
   );
 }
