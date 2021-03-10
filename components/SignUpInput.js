@@ -8,7 +8,6 @@ const SignUpInput = ({moveTo}) => {
   const [email, setEmail]= useState('');
   const [password, setPassword]= useState('');
   const [confirmPassword, setConfirmPassword]= useState('');
-  const [fetching, setFetching] = useState(false);
   const [error, setError] = useState('');
   const [isValid, setValid] = useState(true);
   const [isLogin, setLogin] = useState(true);
@@ -62,7 +61,7 @@ const SignUpInput = ({moveTo}) => {
             // },
             {
               text: 'Get Started',
-              onPress: () => moveTo.navigate('Home'),
+              // onPress: () => moveTo.navigate('Home'),
             }
           ]
         );
@@ -76,15 +75,27 @@ const SignUpInput = ({moveTo}) => {
     try{
       let feedback = await auth().signInWithEmailAndPassword(email, password)
       if(feedback && feedback.user){
+        clearPasswords();
         Alert.alert("Success ✅",
           `Welcome back ${email}`,
           [
             {
               text: "Proceed",
-              onPress: ()=> moveTo.navigate('Home')
+              // onPress: ()=> moveTo.navigate('Home')
             }
           ]
         );
+      }
+    } catch(e){
+      setError(e);
+    }
+  }
+
+  const doSignOut = () => {
+    try{
+      let feedback = auth().signOut()
+      if(feedback){
+        Alert.alert("Goodbye friend")
       }
     } catch(e){
       setError(e);
