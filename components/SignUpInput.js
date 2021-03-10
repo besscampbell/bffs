@@ -91,17 +91,6 @@ const SignUpInput = ({moveTo}) => {
     }
   }
 
-  // const doSignOut = () => {
-  //   try{
-  //     let feedback = auth().signOut()
-  //     if(feedback){
-  //       Alert.alert("Goodbye friend")
-  //     }
-  //   } catch(e){
-  //     setError(e);
-  //   }
-  // }
-
   const clearPasswords = () => {
     setPassword('');
     setConfirmPassword('');
