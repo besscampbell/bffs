@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {SafeAreaView, Text, Platform, StatusBar, StyleSheet, Button, View} from 'react-native';
 
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({ navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.textContainer}>
@@ -20,6 +20,11 @@ const HomeScreen = ({navigation}) => {
           title="Share"
           onPress={() =>
             navigation.navigate('Questions')}
+        />
+        <Button style={styles.button}
+          title="Sign Out"
+          onPress={() =>
+            navigation.navigate('LogOff')}
         />
       </View>
     </SafeAreaView>

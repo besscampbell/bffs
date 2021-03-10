@@ -5,6 +5,7 @@ import HomeScreen from '../screens/HomeScreen';
 import QuestionScreen from '../screens/QuestionScreen';
 import ResponseScreen from '../screens/ResponseScreen';
 import LoginScreen from '../screens/LoginScreen';
+import LogOffScreen from '../screens/LogOffScreen';
 import ResponseDetailsScreen from '../screens/ResponseDetailsScreen';
 import 'firebase/auth';
 import firebase, { auth } from 'firebase/app';
@@ -85,6 +86,13 @@ const Navigation = () => {
         <Stack.Screen
           name="Details"
           component={ResponseDetailsScreen}
+          options={{
+            title: '',
+            }}
+        />
+        <Stack.Screen
+          name="LogOff"
+          component={LogOffScreen}
           options={{
             title: '',
             }}
