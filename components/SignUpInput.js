@@ -67,7 +67,8 @@ const SignUpInput = ({moveTo}) => {
         );
       }
     } catch(e) {
-      setError(e.message)
+      setError(e.message);
+      clearPasswords();
     }
   }
 
@@ -87,7 +88,8 @@ const SignUpInput = ({moveTo}) => {
         );
       }
     } catch(e){
-      setError(e);
+      setError(e.message);
+      clearPasswords();
     }
   }
 
@@ -189,7 +191,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 25,
     height: 50,
-    marginBottom: 20,
+    margin: 20,
     justifyContent: "center",
     padding: 20,
   },
@@ -241,6 +243,7 @@ const styles = StyleSheet.create({
   },
   errorContainer: {
     alignItems: 'center',
+    justifyContent: 'center',
     margin: 10
   }
 })

@@ -18,14 +18,14 @@ const HomeScreen = ({ navigation}) => {
             navigation.navigate('Responses')}
         >
           <AntDesign name="cloudo" size={100} color="#e75480" />
-          <Text style={styles.buttonText}>Listen</Text>
+          {/* <Text style={styles.buttonText}>Listen</Text> */}
         </TouchableOpacity>
         <TouchableOpacity 
           style={styles.button}
           onPress={() =>
             navigation.navigate('Questions')}>
           <Feather name="sun" size={100} color="#e75480" />
-          <Text style={styles.buttonText}>Share</Text>
+          {/* <Text style={styles.buttonText}>Share</Text> */}
         </TouchableOpacity>
       </View>
       <View style={styles.account}>

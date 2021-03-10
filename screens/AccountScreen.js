@@ -19,7 +19,7 @@ const AccountScreen = () => {
       <TouchableOpacity
         style={styles.button}
         onPress={() => doSignOut()}>
-        <Text style={styles.text}>Goodbye?</Text>
+        <Text style={styles.buttonText}>Goodbye?</Text>
       </TouchableOpacity>
     </View>
   );
@@ -40,13 +40,18 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     justifyContent: 'center',
-    backgroundColor: "#e6d7ff",
+    backgroundColor: "#e75480",
     borderRadius: 50,
     height: 50,
     width: 200,
     marginTop: 40,
     marginBottom: 10,
   },
+  buttonText: {
+    fontFamily: 'Palatino',
+    color: '#fadadd',
+    fontSize: 30
+  }
 });
 
 export default AccountScreen;

@@ -5,6 +5,7 @@ import Input from '../components/Input'
 import {useFirestore} from 'react-redux-firebase';
 import {useSelector, useDispatch} from 'react-redux';
 import * as a from '../actions';
+import { auth } from "firebase";
 
 const QuestionScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -20,10 +21,13 @@ const QuestionScreen = ({navigation}) => {
   const handleAddResponse = (response) => {
     try{
       console.log(questionNumber);
+      console.log(auth().currentUser)
+      const userId = auth().currentUser.uid;
       firestore.collection('responses').add(
         {
           response: response,
-          question: (questionNumber + 1)
+          question: (questionNumber + 1),
+          user: userId
         })
         .then(handleNextQuestion)
         .then(navigation.navigate('Home')
