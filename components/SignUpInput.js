@@ -11,6 +11,7 @@ const SignUpInput = ({moveTo}) => {
   const [fetching, setFetching] = useState(false);
   const [error, setError] = useState('');
   const [isValid, setValid] = useState(true);
+  const [isLogin, setLogin] = useState(true);
 
 
   function doSignUp () {
@@ -67,7 +68,26 @@ const SignUpInput = ({moveTo}) => {
         );
       }
     } catch(e) {
-      console.error(e.message)
+      setError(e.message)
+    }
+  }
+
+  const doSignIn = async (email, password) => {
+    try{
+      let feedback = await auth().signInWithEmailAndPassword(email, password)
+      if(feedback && feedback.user){
+        Alert.alert("Success ✅",
+          `Welcome back ${email}`,
+          [
+            {
+              text: "Proceed",
+              onPress: ()=> moveTo.navigate('Home')
+            }
+          ]
+        );
+      }
+    } catch(e){
+      setError(e);
     }
   }
 
@@ -106,7 +126,7 @@ const SignUpInput = ({moveTo}) => {
           maxLength={35}
         />
       </View>
-      <View style={styles.inputContainer}>
+     {!isLogin ?( <View style={styles.inputContainer}>
         <TextInput
           secureTextEntry
           style={styles.input}
@@ -119,7 +139,7 @@ const SignUpInput = ({moveTo}) => {
           maxLength={35}
           clearButtonMode="always"
         />
-      </View>
+      </View>) : null}
       {error ? (
       <View style={styles.errorContainer}>
         <Text style={styles.errorText}>{error}</Text>
@@ -128,17 +148,32 @@ const SignUpInput = ({moveTo}) => {
       {/* <TouchableOpacity>
         <Text style={styles.forgot}>Forgot Password?</Text>
       </TouchableOpacity> */}
+        {isLogin ? (<TouchableOpacity
+          style={styles.button}
+          onPress={() => doSignIn(email, password)}>
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>):
         <TouchableOpacity
           style={styles.button}
           onPress={() => doSignUp(email, password, confirmPassword)}>
           <Text style={styles.buttonText}>Register</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.loginView}>
+        </TouchableOpacity>}
+        {!isLogin ? (<TouchableOpacity
+          style={styles.loginView}
+          onPress={() => setLogin(true)}>
           <Text>
             <Text style={styles.login}>Already a user? </Text>
             <Text style={styles.login2}>Login</Text>
           </Text>
-        </TouchableOpacity>
+        </TouchableOpacity>):
+       <TouchableOpacity
+          style={styles.loginView}
+          onPress={() => setLogin(false)}>
+          <Text>
+            <Text style={styles.login}>First visit? </Text>
+            <Text style={styles.login2}>Sign Up</Text>
+          </Text>
+        </TouchableOpacity>}
     </View>
   );
 }
@@ -206,6 +241,7 @@ const styles = StyleSheet.create({
   },
   errorContainer: {
     alignItems: 'center',
+    margin: 10
   }
 })
 
