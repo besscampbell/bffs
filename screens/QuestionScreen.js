@@ -20,8 +20,6 @@ const QuestionScreen = ({navigation}) => {
 
   const handleAddResponse = (response) => {
     try{
-      console.log(questionNumber);
-      console.log(auth().currentUser)
       const userId = auth().currentUser.uid;
       firestore.collection('responses').add(
         {
