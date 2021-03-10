@@ -34,8 +34,8 @@ const ResponseScreen = ({navigation, props}) => {
     );
   } else {
     return (
-      <View>
-        <Text>Loading...</Text>
+      <View style={styles.container}>
+        <Text style={styles.text}>Loading...</Text>
       </View>
     )
   }
@@ -48,6 +48,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: "space-around"
   },
+  text: {
+    fontFamily: 'Palatino',
+    color: '#e75480',
+    fontSize: 20
+  }
 });
 
 export default ResponseScreen;

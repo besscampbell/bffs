@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import {SafeAreaView, Text, Platform, StatusBar, StyleSheet, Button, View} from 'react-native';
-import { connect } from 'react-redux';
 
-const HomeScreen = ({navigation}) => {
+
+const HomeScreen = ({ navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.textContainer}>
@@ -20,6 +20,11 @@ const HomeScreen = ({navigation}) => {
           title="Share"
           onPress={() =>
             navigation.navigate('Questions')}
+        />
+        <Button style={styles.button}
+          title="Sign Out"
+          onPress={() =>
+            navigation.navigate('LogOff')}
         />
       </View>
     </SafeAreaView>
@@ -63,13 +68,4 @@ const styles = StyleSheet.create({
   }
 });
 
-// const mapStateToProps = state => {
-//   return {
-//     question: state.question,
-//     selectedResponse: state.selectedResponse,
-//     firestore: state.firestore,
-//   }
-// }
-
-// export default connect(mapStateToProps)(HomeScreen);
 export default HomeScreen;
