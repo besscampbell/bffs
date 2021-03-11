@@ -4,13 +4,13 @@ import Response from '../components/Response'
 import {useSelector} from 'react-redux';
 import {useFirestoreConnect, isLoaded} from 'react-redux-firebase';
 import { auth } from "firebase/app";
-const myResponsesRedux = 'myResponses'
 
 const ResponseScreen = ({navigation, props}) => {
   const thisUser = auth().currentUser.uid
+  const myResponsesRedux = 'myResponses'
   console.log(thisUser);
   useFirestoreConnect([
-    {collection: 'responses'},
+    // {collection: 'responses'},
     {
       collection: 'responses',
       where: [['user', '==', thisUser]],
@@ -20,7 +20,11 @@ const ResponseScreen = ({navigation, props}) => {
   // const responses = useSelector(state => state.firestore.ordered.responses);
   const myResponses = useSelector(state => state.firestore.ordered[myResponsesRedux]);
   const mappedResponses = myResponses.map(function(el, i){
-    return  {index: i, value: el};
+    return  {key: el.id, 
+            question: el.question,
+            user: el.user,
+            response: el.response,
+            id: el.id };
   });
   mappedResponses.sort(function(a,b) {
     return a.question - b.question;
@@ -38,8 +42,9 @@ const ResponseScreen = ({navigation, props}) => {
     return (
       <View style={styles.container}>
         <FlatList
-          data={mappedResponses}
           style={styles.text}
+          data={mappedResponses}
+          keyExtractor={itemData => itemData.id}
           renderItem={itemData => (
           <Response
             question={itemData.item.question}
