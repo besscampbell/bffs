@@ -7,10 +7,16 @@ import { auth } from "firebase/app";
 
 const ResponseScreen = ({navigation, props}) => {
   const thisUser = auth().currentUser.uid
-  const myResponsesRedux = 'myResponses'
+  const myResponsesRedux = 'myResponses';
+  // const myFriendsRedux = 'myFriends';
   console.log(thisUser);
   useFirestoreConnect([
     // {collection: 'responses'},
+    // {
+    //   collection: 'friends',
+      // where: [['user', '==', thisUser]],
+    //   storeAs: myFriendsRedux,
+    // },
     {
       collection: 'responses',
       where: [['user', '==', thisUser]],
@@ -18,17 +24,20 @@ const ResponseScreen = ({navigation, props}) => {
     }
   ]);
   // const responses = useSelector(state => state.firestore.ordered.responses);
+  // const myFriends = useSelector(state => state.firestore.ordered[myFriendsRedux]);
+  // const myFriendEmail = myFriends[0].friendEmail;
   const myResponses = useSelector(state => state.firestore.ordered[myResponsesRedux]);
-  const mappedResponses = myResponses.map(function(el, i){
-    return  {key: el.id, 
-            question: el.question,
-            user: el.user,
-            response: el.response,
-            id: el.id };
-  });
-  mappedResponses.sort(function(a,b) {
-    return a.question - b.question;
-  });
+  // const mappedResponses = myResponses.map(function(el, i){
+  //   return  {key: el.id,
+  //           question: el.question,
+  //           user: el.user,
+  //           response: el.response,
+  //           id: el.id };
+  // });
+  const mappedResponses = [...myResponses]
+  // mappedResponses.sort(function(a,b) {
+  //   return a.question - b.question;
+  // });
 
 
 
@@ -43,7 +52,7 @@ const ResponseScreen = ({navigation, props}) => {
       <View style={styles.container}>
         <FlatList
           style={styles.text}
-          data={mappedResponses}
+          data={mappedResponses.sort((a,b) => a.question - b.question)}
           keyExtractor={itemData => itemData.id}
           renderItem={itemData => (
           <Response

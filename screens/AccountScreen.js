@@ -1,12 +1,15 @@
 import React from 'react';
 import {Text, TouchableOpacity, View, StyleSheet, SafeAreaView} from 'react-native';
 import firebase, { auth } from 'firebase/app';
-import Input from '../components/Input'
+import EmailInput from '../components/EmailInput'
 import {useFirestore} from 'react-redux-firebase';
+import {useDispatch} from 'react-redux';
+import * as a from '../actions';
 
 
-const AccountScreen = () => {
+const AccountScreen = ({navigation}) => {
   const firestore = useFirestore();
+  const dispatch = useDispatch();
 
   const doSignOut = () => {
     try{
@@ -21,18 +24,23 @@ const AccountScreen = () => {
 
   const handlePairing = (friend) => {
     try{
-      const user= auth().users;
-      console.log(user);
-      console.log(friend);
-      // firestore.collection('responses').add(
-      //   {
-      //     response: response,
-      //     question: (questionNumber + 1),
-      //     user: userId
-      //   })
-      //   .then(handleNextQuestion)
-      //   .then(navigation.navigate('Home')
-      // );
+      const user= auth().currentUser;
+      // console.log(user);
+      // console.log(friend);
+      // const action =  a.addFriend({
+      //       friendEmail: friend,
+      //       user: user.uid,
+      //       id: Math.random,
+      //     });
+      // dispatch(action)
+
+      firestore.collection('friends').add(
+        {
+          friendEmail: friend,
+          user: user.uid
+        })
+        .then(navigation.navigate('Home'))
+        // .then(console.log(user))
     } catch(error){
       console.log(error);
     }
@@ -41,12 +49,13 @@ const AccountScreen = () => {
 
   return(
     <SafeAreaView style={styles.container}>
-      <Input
+      <EmailInput
+        style={styles.email}
         onAddResponse={handlePairing}
         buttonText="Add friend"
         placeholderText="Your friend's email"
       />
-      <View >
+      <View style={styles.goodbye}>
         <Text style={styles.text}>Are you ready to say</Text>
         <TouchableOpacity
           style={styles.button}
@@ -84,6 +93,15 @@ const styles = StyleSheet.create({
     fontFamily: 'Palatino',
     color: '#fadadd',
     fontSize: 30
+  },
+  goodbye: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  email: {
+    flex:1,
+    justifyContent: 'center',
   }
 });
 

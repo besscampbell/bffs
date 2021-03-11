@@ -94,7 +94,7 @@ const Navigation = () => {
           name="Account"
           component={AccountScreen}
           options={{
-            title: '',
+            title: 'Account',
             }}
         />
       </Stack.Navigator>

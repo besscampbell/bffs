@@ -11,6 +11,7 @@ const QuestionScreen = ({navigation}) => {
   const dispatch = useDispatch();
   const  questionNumber = useSelector(state => state.questions);
   const firestore = useFirestore();
+  const user = auth().currentUser;
 
   const handleNextQuestion = () => {
     const action = a.nextQuestion();
@@ -20,16 +21,16 @@ const QuestionScreen = ({navigation}) => {
 
   const handleAddResponse = (response) => {
     try{
-      const userId = auth().currentUser.uid;
+
       firestore.collection('responses').add(
         {
           response: response,
           question: (questionNumber + 1),
-          user: userId
+          user: user.uid,
+          email: user.email,
         })
         .then(handleNextQuestion)
-        .then(navigation.navigate('Home')
-      );
+        .then(navigation.navigate('Home'));
     } catch(error){
       console.log(error);
     }
