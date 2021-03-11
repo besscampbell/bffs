@@ -37,9 +37,12 @@ const QuestionScreen = ({navigation}) => {
 
   return(
     <ScrollView style={styles.container}>
-      <Questions style={styles.quest} onQuestion={questionNumber}/>
-      <Input style={styles.input}
+      <Questions onQuestion={questionNumber}/>
+      <Input
         onAddResponse={handleAddResponse}
+        buttonText="Send to your friend"
+        placeholderText="Share here..."
+        inputContainer={true}
       />
     </ScrollView>
   );

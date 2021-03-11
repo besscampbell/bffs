@@ -1,8 +1,13 @@
 import React from 'react';
-import {Text, TouchableOpacity, View, StyleSheet} from 'react-native';
+import {Text, TouchableOpacity, View, StyleSheet, SafeAreaView} from 'react-native';
 import firebase, { auth } from 'firebase/app';
+import Input from '../components/Input'
+import {useFirestore} from 'react-redux-firebase';
+
 
 const AccountScreen = () => {
+  const firestore = useFirestore();
+
   const doSignOut = () => {
     try{
       let feedback = auth().signOut()
@@ -13,15 +18,43 @@ const AccountScreen = () => {
       console.log(e);
     }
   }
+
+  const handlePairing = (friend) => {
+    try{
+      const user= auth().users;
+      console.log(user);
+      console.log(friend);
+      // firestore.collection('responses').add(
+      //   {
+      //     response: response,
+      //     question: (questionNumber + 1),
+      //     user: userId
+      //   })
+      //   .then(handleNextQuestion)
+      //   .then(navigation.navigate('Home')
+      // );
+    } catch(error){
+      console.log(error);
+    }
+  }
+
+
   return(
-    <View style={styles.container}>
-      <Text style={styles.text}>Are you ready to say</Text>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => doSignOut()}>
-        <Text style={styles.buttonText}>Goodbye?</Text>
-      </TouchableOpacity>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Input
+        onAddResponse={handlePairing}
+        buttonText="Add friend"
+        placeholderText="Your friend's email"
+      />
+      <View >
+        <Text style={styles.text}>Are you ready to say</Text>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => doSignOut()}>
+          <Text style={styles.buttonText}>Goodbye?</Text>
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
   );
 }
 

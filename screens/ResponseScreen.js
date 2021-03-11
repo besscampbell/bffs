@@ -8,6 +8,7 @@ const myResponsesRedux = 'myResponses'
 
 const ResponseScreen = ({navigation, props}) => {
   const thisUser = auth().currentUser.uid
+  console.log(thisUser);
   useFirestoreConnect([
     {collection: 'responses'},
     {
@@ -18,8 +19,8 @@ const ResponseScreen = ({navigation, props}) => {
   ]);
   // const responses = useSelector(state => state.firestore.ordered.responses);
   const myResponses = useSelector(state => state.firestore.ordered[myResponsesRedux]);
-  const mappedResponses = myResponses.map(function(el){
-    return  el;
+  const mappedResponses = myResponses.map(function(el, i){
+    return  {index: i, value: el};
   });
   mappedResponses.sort(function(a,b) {
     return a.question - b.question;
