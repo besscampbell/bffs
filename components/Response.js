@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: 'Palatino',
     color: '#e75480',
+    fontSize: 20,
   }
 })
 

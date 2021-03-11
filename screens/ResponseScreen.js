@@ -3,23 +3,23 @@ import {View, Text, StyleSheet, FlatList} from 'react-native';
 import Response from '../components/Response'
 import {useSelector} from 'react-redux';
 import {useFirestoreConnect, isLoaded} from 'react-redux-firebase';
-import { auth } from "firebase";
+import { auth } from "firebase/app";
+const myResponsesRedux = 'myResponses'
 
 const ResponseScreen = ({navigation, props}) => {
-  const thisUserId = auth().currentUser.uid
-  console.log(thisUserId);
+  const thisUser = auth().currentUser.uid
   useFirestoreConnect([
-    // {collection: 'responses'},
+    {collection: 'responses'},
     {
       collection: 'responses',
-      where: [['user', '==', thisUserId]],
-      storeAs: myResponses
+      where: [['user', '==', thisUser]],
+      storeAs: myResponsesRedux,
     }
   ]);
   // const responses = useSelector(state => state.firestore.ordered.responses);
-  const myResponses = useSelector(state => state.firestore.ordered.responses);
+  const myResponses = useSelector(state => state.firestore.ordered[myResponsesRedux]);
   const mappedResponses = myResponses.map(function(el){
-    return el;
+    return  el;
   });
   mappedResponses.sort(function(a,b) {
     return a.question - b.question;
@@ -38,6 +38,7 @@ const ResponseScreen = ({navigation, props}) => {
       <View style={styles.container}>
         <FlatList
           data={mappedResponses}
+          style={styles.text}
           renderItem={itemData => (
           <Response
             question={itemData.item.question}
