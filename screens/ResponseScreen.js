@@ -18,7 +18,14 @@ const ResponseScreen = ({navigation, props}) => {
   ]);
   // const responses = useSelector(state => state.firestore.ordered.responses);
   const myResponses = useSelector(state => state.firestore.ordered.responses);
-  console.log(myResponses);
+  const mappedResponses = myResponses.map(function(el){
+    return el;
+  });
+  mappedResponses.sort(function(a,b) {
+    return a.question - b.question;
+  });
+
+
 
   const handleSelectedResponse = (id) => {
     const responseFromList = myResponses.filter(response => response.id === id);
@@ -26,11 +33,11 @@ const ResponseScreen = ({navigation, props}) => {
     navigation.navigate('Details', {response: selectedResponse});
   }
 
-  if(isLoaded(myResponses)){
+  if(isLoaded(mappedResponses)){
     return (
       <View style={styles.container}>
         <FlatList
-          data={myResponses}
+          data={mappedResponses}
           renderItem={itemData => (
           <Response
             question={itemData.item.question}
