@@ -40,7 +40,6 @@ const AccountScreen = ({navigation}) => {
           user: user.uid
         })
         .then(navigation.navigate('Home'))
-        // .then(console.log(user))
     } catch(error){
       console.log(error);
     }
