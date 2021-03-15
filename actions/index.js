@@ -8,3 +8,10 @@ export const selectResponse = (id) => ({
   type: c.SELECT_RESPONSE,
   id,
 });
+
+export const addFriend = (friend) => ({
+  type: c.ADD_FRIEND,
+  id,
+  userId,
+  friendEmail,
+})

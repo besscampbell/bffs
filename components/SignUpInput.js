@@ -55,19 +55,15 @@ const SignUpInput = ({moveTo}) => {
           "Success ✅",
           `Account created for ${email}`,
           [
-            // {
-            //   text: 'Invite your bestie',
-            //   onPress:() => navigation.navigate('Home')
-            // },
             {
               text: 'Get Started',
-              // onPress: () => moveTo.navigate('Home'),
             }
           ]
         );
       }
     } catch(e) {
-      setError(e.message)
+      setError(e.message);
+      clearPasswords();
     }
   }
 
@@ -81,26 +77,15 @@ const SignUpInput = ({moveTo}) => {
           [
             {
               text: "Proceed",
-              // onPress: ()=> moveTo.navigate('Home')
             }
           ]
         );
       }
     } catch(e){
-      setError(e);
+      setError(e.message);
+      clearPasswords();
     }
   }
-
-  // const doSignOut = () => {
-  //   try{
-  //     let feedback = auth().signOut()
-  //     if(feedback){
-  //       Alert.alert("Goodbye friend")
-  //     }
-  //   } catch(e){
-  //     setError(e);
-  //   }
-  // }
 
   const clearPasswords = () => {
     setPassword('');
@@ -156,9 +141,6 @@ const SignUpInput = ({moveTo}) => {
         <Text style={styles.errorText}>{error}</Text>
       </View>
       ): null}
-      {/* <TouchableOpacity>
-        <Text style={styles.forgot}>Forgot Password?</Text>
-      </TouchableOpacity> */}
         {isLogin ? (<TouchableOpacity
           style={styles.button}
           onPress={() => doSignIn(email, password)}>
@@ -190,17 +172,12 @@ const SignUpInput = ({moveTo}) => {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-    // justifyContent: "center",
-    // alignItems: "center"
-  },
   inputContainer: {
     width: 350,
     backgroundColor: "white",
     borderRadius: 25,
     height: 50,
-    marginBottom: 20,
+    margin: 20,
     justifyContent: "center",
     padding: 20,
   },
@@ -252,6 +229,7 @@ const styles = StyleSheet.create({
   },
   errorContainer: {
     alignItems: 'center',
+    justifyContent: 'center',
     margin: 10
   }
 })

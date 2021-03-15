@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {TextInput, StyleSheet, View, Button} from 'react-native';
 
-const Input = (props)=> {
+const Input = ({placeholderText, buttonText, onAddResponse}, props)=> {
   const [response, setResponse]= useState('');
   const handleResponseInput = response => {
     setResponse(response);
@@ -13,7 +13,7 @@ const Input = (props)=> {
         <TextInput
           {...props}
           style={styles.input}
-          placeholder="Share here..."
+          placeholder={placeholderText}
           placeholderTextColor = {"#f294af"}
           onChangeText={handleResponseInput}
           value={response}
@@ -25,8 +25,8 @@ const Input = (props)=> {
       <View style={styles.buttonContainer}>
         <Button
           style={styles.button}
-          title="Send to your friend"
-          onPress={()=> props.onAddResponse(response)}
+          title={buttonText}
+          onPress={()=> onAddResponse(response)}
         />
       </View>
     </View>
@@ -54,6 +54,6 @@ const styles = StyleSheet.create({
     color: '#e75480',
     fontSize: 30
   }
-})
+});
 
 export default Input;

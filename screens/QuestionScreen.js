@@ -5,11 +5,13 @@ import Input from '../components/Input'
 import {useFirestore} from 'react-redux-firebase';
 import {useSelector, useDispatch} from 'react-redux';
 import * as a from '../actions';
+import { auth } from "firebase";
 
 const QuestionScreen = ({navigation}) => {
   const dispatch = useDispatch();
   const  questionNumber = useSelector(state => state.questions);
   const firestore = useFirestore();
+  const user = auth().currentUser;
 
   const handleNextQuestion = () => {
     const action = a.nextQuestion();
@@ -19,15 +21,16 @@ const QuestionScreen = ({navigation}) => {
 
   const handleAddResponse = (response) => {
     try{
-      console.log(questionNumber);
+
       firestore.collection('responses').add(
         {
           response: response,
-          question: (questionNumber + 1)
+          question: (questionNumber + 1),
+          user: user.uid,
+          email: user.email,
         })
         .then(handleNextQuestion)
-        .then(navigation.navigate('Home')
-      );
+        .then(navigation.navigate('Home'));
     } catch(error){
       console.log(error);
     }
@@ -35,9 +38,12 @@ const QuestionScreen = ({navigation}) => {
 
   return(
     <ScrollView style={styles.container}>
-      <Questions style={styles.quest} onQuestion={questionNumber}/>
-      <Input style={styles.input}
+      <Questions onQuestion={questionNumber}/>
+      <Input
         onAddResponse={handleAddResponse}
+        buttonText="Send to your friend"
+        placeholderText="Share here..."
+        inputContainer={true}
       />
     </ScrollView>
   );

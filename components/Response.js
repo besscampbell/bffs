@@ -7,7 +7,6 @@ const Response = (props) => {
     <TouchableOpacity onPress={() => props.onToDetails(props.id)}>
       <View style={styles.container}>
         <Text style={styles.text}>Question {props.question}</Text>
-        {/* <Text style={styles.text}> {props.response}</Text> */}
       </View>
     </TouchableOpacity>
   );
@@ -21,6 +20,7 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: 'Palatino',
     color: '#e75480',
+    fontSize: 20,
   }
 })
 

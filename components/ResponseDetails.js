@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, Platform, StatusBar} from 'react-native';
 import {questSet} from '../questions';
 
 const ResponseDetails = ({ response }) => {
-  
+
   return (
       <View style={styles.container}>
         <Text style={styles.text1}>{questSet[(response.question -1)].question}</Text>
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Palatino',
     color: '#e75480',
     fontSize: 20,
-    flex: 2, 
+    flex: 2,
   },
 });
 

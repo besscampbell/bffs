@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {SafeAreaView, Text, Platform, StatusBar, StyleSheet, Button, View} from 'react-native';
+import {SafeAreaView, Text, Platform, StatusBar, StyleSheet, Button, View, TouchableOpacity} from 'react-native';
+import { AntDesign, Feather } from '@expo/vector-icons';
 
 
 const HomeScreen = ({ navigation}) => {
@@ -11,21 +12,26 @@ const HomeScreen = ({ navigation}) => {
         <Text style={styles.text3}>Forever</Text>
       </View>
       <View style={styles.buttons}>
-        <Button style={styles.button}
-          title="Listen"
+        <TouchableOpacity
+          style={styles.button}
           onPress={() =>
             navigation.navigate('Responses')}
-        />
-        <Button style={styles.button}
-          title="Share"
+        >
+          <AntDesign name="cloudo" size={100} color="#e75480" />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
           onPress={() =>
-            navigation.navigate('Questions')}
-        />
-        <Button style={styles.button}
-          title="Sign Out"
+            navigation.navigate('Questions')}>
+          <Feather name="sun" size={100} color="#e75480" />
+        </TouchableOpacity>
+      </View>
+      <View style={styles.account}>
+        <TouchableOpacity
           onPress={() =>
-            navigation.navigate('LogOff')}
-        />
+            navigation.navigate('Account')}>
+          <AntDesign name="home" size={100} color="#e75480" />
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -40,7 +46,7 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight: 0,
   },
   textContainer: {
-    flex: 3,
+    flex: 6,
     justifyContent: 'center',
 
   },
@@ -61,10 +67,23 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText: {
+    fontFamily:'Palatino',
+    color: '#e75480',
+    fontSize: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   buttons: {
     flexDirection: 'row',
-    paddingBottom: 25
+    paddingBottom: 15,
+  },
+  account:{
+    flex: 1,
+    paddingBottom: 10,
   }
 });
 
