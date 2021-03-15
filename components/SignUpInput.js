@@ -55,13 +55,8 @@ const SignUpInput = ({moveTo}) => {
           "Success ✅",
           `Account created for ${email}`,
           [
-            // {
-            //   text: 'Invite your bestie',
-            //   onPress:() => navigation.navigate('Home')
-            // },
             {
               text: 'Get Started',
-              // onPress: () => moveTo.navigate('Home'),
             }
           ]
         );
@@ -82,7 +77,6 @@ const SignUpInput = ({moveTo}) => {
           [
             {
               text: "Proceed",
-              // onPress: ()=> moveTo.navigate('Home')
             }
           ]
         );
@@ -147,9 +141,6 @@ const SignUpInput = ({moveTo}) => {
         <Text style={styles.errorText}>{error}</Text>
       </View>
       ): null}
-      {/* <TouchableOpacity>
-        <Text style={styles.forgot}>Forgot Password?</Text>
-      </TouchableOpacity> */}
         {isLogin ? (<TouchableOpacity
           style={styles.button}
           onPress={() => doSignIn(email, password)}>
@@ -181,11 +172,6 @@ const SignUpInput = ({moveTo}) => {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-    // justifyContent: "center",
-    // alignItems: "center"
-  },
   inputContainer: {
     width: 350,
     backgroundColor: "white",

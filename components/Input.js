@@ -13,7 +13,6 @@ const Input = ({placeholderText, buttonText, onAddResponse}, props)=> {
         <TextInput
           {...props}
           style={styles.input}
-          // placeholder="Share here..."
           placeholder={placeholderText}
           placeholderTextColor = {"#f294af"}
           onChangeText={handleResponseInput}
@@ -26,7 +25,6 @@ const Input = ({placeholderText, buttonText, onAddResponse}, props)=> {
       <View style={styles.buttonContainer}>
         <Button
           style={styles.button}
-          // title="Send to your friend"
           title={buttonText}
           onPress={()=> onAddResponse(response)}
         />

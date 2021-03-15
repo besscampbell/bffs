@@ -11,18 +11,13 @@ const EmailInput = ({placeholderText, buttonText, onAddResponse}, props)=> {
     <View style={styles.container}>
       <View style={styles.inputContainer}>
         <TextInput
-          // {...props}
           style={styles.input}
-          // placeholder="Share here..."
           textAlign={'center'}
           placeholder={placeholderText}
           placeholderTextColor = {"#f294af"}
           onChangeText={handleResponseInput}
           value={response}
           autoCapitalize={'none'}
-          // maxLength={600}
-          // multiline
-          // numberOfLines={6}
         />
       </View>
       <View style={styles.buttonContainer}>
@@ -40,14 +35,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 15,
-    // justifyContent: 'space-between',
   },
   inputContainer: {
-    // backgroundColor: "white",
     paddingTop: 150,
     alignItems: 'center',
-    // height: ,
-    // flex: 
   },
   buttonText: {
     fontFamily: 'Palatino',
@@ -65,7 +56,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   buttonContainer: {
-    // flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },

@@ -12,25 +12,22 @@ const HomeScreen = ({ navigation}) => {
         <Text style={styles.text3}>Forever</Text>
       </View>
       <View style={styles.buttons}>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.button}
           onPress={() =>
             navigation.navigate('Responses')}
         >
           <AntDesign name="cloudo" size={100} color="#e75480" />
-          {/* <Text style={styles.buttonText}>Listen</Text> */}
         </TouchableOpacity>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.button}
           onPress={() =>
             navigation.navigate('Questions')}>
           <Feather name="sun" size={100} color="#e75480" />
-          {/* <Text style={styles.buttonText}>Share</Text> */}
         </TouchableOpacity>
       </View>
       <View style={styles.account}>
-        <TouchableOpacity 
-          // style={styles.button}
+        <TouchableOpacity
           onPress={() =>
             navigation.navigate('Account')}>
           <AntDesign name="home" size={100} color="#e75480" />
@@ -70,11 +67,6 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
-    // backgroundColor: "#e6d7ff",
-    // borderRadius: 25,
-    // margin: 50,
-    // height: 50,
-    // marginBottom: 10,
     justifyContent: 'center',
     alignItems: 'center',
   },
