@@ -21,7 +21,7 @@ Create a mobile app for two people to share intimacy on the internet.
 
 # Preview
 
-![HomeScreen](./ReadMeAssets/Home-screen.png)
+![Preview](https://media.giphy.com/media/rgKI2e1RLpTvh8pWTA/giphy.gif)
 
 # 💁🏽‍♀️ User Stories
 
